@@ -3,9 +3,12 @@
 import shutil
 import os
 import json
-from models import Answer, Question, Test, Settings
+import platform
+from .models import Answer, Question, Test, Settings
 
 __all__ = ('JsonUtils', 'Utils',)
+
+clear_command: str = 'cls' if platform.system() == 'Windows' else 'clear'
 
 
 class Utils:
@@ -71,16 +74,19 @@ class JsonUtils:
         questions: list = list()
         for question in data['questions']:
             answers: list = list()
-            if settings.only_test and question['no_answer']:
+            # if settings.only_test and question['no_answer']:
+            #     continue
+            if question['type'] not in settings.allowed_question_types:
                 continue
             for answer in question['answers']:
                 new_answer: Answer = Answer()
-                new_answer.text = answer['text']
+                new_answer.body = answer['body']
                 new_answer.is_correct = answer['is_correct']
                 answers.append(new_answer)
             new_question: Question = Question()
             new_question.body = question['body']
-            new_question.no_answer = question['no_answer']
+            new_question.type = question['type']
+            # new_question.no_answer = question['no_answer']
             new_question.answers = answers
             questions.append(new_question)
         new_test.questions = questions

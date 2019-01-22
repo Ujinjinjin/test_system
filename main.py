@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from utils import Utils
-from tester import Tester
+from src.utils import Utils
+from src.tester import Tester
 
 writeln = Utils.print
 read = Utils.input
@@ -26,17 +26,13 @@ if __name__ == '__main__':
                 writeln('Для продолжения нажмите Enter', wait=True)
                 continue
             # Print answers
-            line_len = max([len(answer.text) for answer in question.answers])
+            line_len = max([len(answer.body) for answer in question.answers])
             for a_num, answer in enumerate(question.answers):
-                writeln(f'{a_num + 1}. {answer.text}{" "*(line_len - len(answer.text))}')
+                writeln(f'{a_num + 1}. {answer.body}{" " * (line_len - len(answer.body))}')
                 if answer.is_correct:
                     correct_answer = a_num + 1
 
             writeln('\n\n')
-            if question.no_answer:
-                writeln('На этот вопрос представлены только правильные ответы.')
-                writeln('Выучите и нажмите Enter', wait=True)
-                continue
 
             user_answer = read('Введите номер варианта ответа: ', int)
             writeln('\r')

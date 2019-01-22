@@ -7,13 +7,13 @@ __all__ = ('Answer', 'Question', 'Test', 'Settings')
 
 
 class Answer:
-    text: str
+    body: str
     is_correct: bool
 
 
 class Question:
     body: str
-    no_answer: bool
+    type: str
     answers: List[Answer]
 
 
@@ -24,6 +24,7 @@ class Test:
 class Settings:
     only_test: bool
     shuffle_answers: bool
+    allowed_question_types: List[str]
 
     def __init__(self):
         self.load()

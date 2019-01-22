@@ -3,8 +3,8 @@
 import json
 import random
 
-from models import Test, Answer, Settings
-from utils import Utils, JsonUtils
+from .models import Test, Answer, Settings
+from .utils import JsonUtils
 
 
 class Tester:
