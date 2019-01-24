@@ -1,11 +1,12 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-import shutil
-import os
 import json
+import os
 import platform
-from .models import *
+import shutil
+from datetime import datetime
 from typing import List, Dict
+from .models import *
 
 __all__ = ('JsonUtils', 'Utils',)
 
@@ -101,6 +102,37 @@ class Utils:
         margin: int = (width - len(text)) // 2
 
         return _type(input(f'{margin*fill_char}{text}'))
+
+    @staticmethod
+    def get_display_name():
+        if platform.system() == 'Windows':
+            import ctypes
+            get_user_name_ex = ctypes.windll.secur32.GetUserNameExW
+            name_display = 3
+
+            size = ctypes.pointer(ctypes.c_ulong(0))
+            get_user_name_ex(name_display, None, size)
+
+            name_buffer = ctypes.create_unicode_buffer(size.contents.value)
+            get_user_name_ex(name_display, name_buffer, size)
+            return name_buffer.value
+        else:
+            import os
+            import pwd
+            return ' '.join(pwd.getpwuid(os.getuid())[4].split(','))
+
+
+    @staticmethod
+    def get_greeting():
+        current_hour: int = datetime.now().time().hour
+        if (current_hour > 21) or (current_hour < 6):
+            return 'Доброй ночи'
+        elif 6 < current_hour < 12:
+            return 'Доброе утро'
+        elif 12 < current_hour < 17:
+            return 'Добрый день'
+        else:
+            return 'Добрый вечер'
 
 
 class JsonUtils:

@@ -8,7 +8,8 @@ read = Utils.input
 is_invalid_input = False
 
 if __name__ == '__main__':
-    writeln('Добро пожаловать в систему тестирования ТОиИТЭА.', v_centered=True, clear=True, buffer=0)
+    writeln(f'{Utils.get_greeting()}, {Utils.get_display_name()}', v_centered=True, clear=True, buffer=0)
+    writeln('Добро пожаловать в систему тестирования ТОиИТЭА.')
     writeln('Для запуска нажмите Enter.', wait=True)
 
     tester: Tester = Tester('files/test.json')
