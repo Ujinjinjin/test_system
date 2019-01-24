@@ -86,7 +86,8 @@ class Tester:
 
         if settings.shuffle_answers:
             for question in self.test.questions:
-                random.shuffle(question.answers)
+                if question.allowed_shuffle:
+                    random.shuffle(question.answers)
 
     @property
     def result(self) -> float:

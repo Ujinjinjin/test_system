@@ -26,6 +26,7 @@ class Question:
     body: str
     type: QuestionType
     answers: List[Union[Answer, SequenceAnswer]]
+    allowed_shuffle: bool
 
 
 class Test:

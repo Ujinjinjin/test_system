@@ -84,7 +84,8 @@ if __name__ == '__main__':
         dictionary['questions'].append({
             "body": questions[i][3:],
             "type": q_type,
-            "answers": convert[questions[i][1]](answers[i])
+            "answers": convert[questions[i][1]](answers[i]),
+            "shuffle": True
         })
 
     with open('files/new_test.json', 'w', encoding='utf8') as f:
