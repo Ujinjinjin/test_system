@@ -1,6 +1,6 @@
 {
   "only_test": true,
-  "shuffle_answers": true,
+  "shuffle_answers": false,
   "allowed_question_types": [
     "Single", "Multiple"
   ]
