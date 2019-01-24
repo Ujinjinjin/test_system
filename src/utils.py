@@ -117,7 +117,7 @@ class JsonUtils:
                 continue
             new_question: Question = Question()
             new_question.body = question['body']
-            new_question.type = question['type']
+            new_question.type = QuestionType[question['type']]
             new_question.answers = convert[new_question.type.name](question['answers'])
             questions.append(new_question)
         new_test.questions = questions
