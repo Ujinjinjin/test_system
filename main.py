@@ -20,7 +20,7 @@ if __name__ == '__main__':
         for q_num, question in enumerate(tester.test.questions):
             while True:
                 writeln(f'Количество верных ответов: {tester.correct_answers}', clear=True)
-                writeln(f'Вопрос №{q_num + 1}', v_centered=True)
+                writeln(f'Вопрос №{q_num + 1} | {question.type.name}', v_centered=True)
                 writeln(f'{question.body}\n')
                 correct_answer: str
                 # No answers

@@ -4,5 +4,5 @@
   "allowed_question_types": [
     "Single", "Multiple", "Sequence"
   ],
-  "questions_in_test": 1
+  "questions_in_test": 0
 }
