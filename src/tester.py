@@ -49,6 +49,19 @@ class Tester:
                 counter += 1
             return result
 
+        if question.type == QuestionType.Sequence:
+            result = ""
+            current_seq_number = 1
+
+            while result.__len__() < question.answers.__len__():
+                current_index = 1
+                for item in question.answers:
+                    if item.seq_number == current_seq_number:
+                        result += str(current_index)
+                        current_seq_number += 1
+                    current_index += 1
+            return result
+
     def check_answer(self, question: Question, user_answer: int) -> str:
         str_user_answer = str(user_answer)
         if str_user_answer.__len__() > question.answers.__len__():
@@ -67,9 +80,10 @@ class Tester:
             self.count_answer(True)
             return right_answer
 
-        if question.type == QuestionType.Sequence:  # TODO
-            self.count_answer(False)
-            return "Under construction"
+        if question.type == QuestionType.Sequence:
+            self.count_answer(right_answer == str_user_answer)
+            return right_answer
+
         else:
             self.count_answer(False)
             return "Возможно у вопроса неправильный тип"
