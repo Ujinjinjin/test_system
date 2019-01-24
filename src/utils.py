@@ -4,11 +4,51 @@ import shutil
 import os
 import json
 import platform
-from .models import Answer, Question, Test, Settings
+from .models import *
+from typing import List, Dict
 
 __all__ = ('JsonUtils', 'Utils',)
 
 clear_command: str = 'cls' if platform.system() == 'Windows' else 'clear'
+
+
+class Converter:
+    @staticmethod
+    def convert_single(answer_list: List[dict]):
+        answers: List[Answer] = list()
+        for answer in answer_list:
+            new_answer: Answer = Answer()
+            new_answer.body = answer['body']
+            new_answer.is_correct = answer['is_correct']
+            answers.append(new_answer)
+        return answers
+
+    @staticmethod
+    def convert_multiple(answer_list: List[dict]):
+        return Converter.convert_single(answer_list)
+
+    @staticmethod
+    def convert_sequence(answer_list: List[dict]):
+        answers: List[SequenceAnswer] = list()
+        for answer in answer_list:
+            new_answer: SequenceAnswer = Answer()
+            new_answer.body = answer['body']
+            new_answer.is_correct = answer['is_correct']
+            new_answer.seq_number = answer['seq_number']
+            answers.append(new_answer)
+        return answers
+
+    @staticmethod
+    def convert_connection(answer_list: List[dict]):
+        pass
+
+
+convert = {
+    'Single': Converter.convert_single,
+    'Multiple': Converter.convert_multiple,
+    'Sequence': Converter.convert_sequence,
+    'Connect': Converter.convert_connection,
+}
 
 
 class Utils:
@@ -73,21 +113,12 @@ class JsonUtils:
         new_test: Test = Test()
         questions: list = list()
         for question in data['questions']:
-            answers: list = list()
-            # if settings.only_test and question['no_answer']:
-            #     continue
             if question['type'] not in settings.allowed_question_types:
                 continue
-            for answer in question['answers']:
-                new_answer: Answer = Answer()
-                new_answer.body = answer['body']
-                new_answer.is_correct = answer['is_correct']
-                answers.append(new_answer)
             new_question: Question = Question()
             new_question.body = question['body']
-            new_question.type = question['type']
-            # new_question.no_answer = question['no_answer']
-            new_question.answers = answers
+            new_question.type = QuestionType[question['type']]
+            new_question.answers = convert[new_question.type.name](question['answers'])
             questions.append(new_question)
         new_test.questions = questions
         return new_test

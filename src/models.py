@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from typing import List
+from typing import List, Union
 import json
 from enum import Enum
 
-__all__ = ('Answer', 'Question', 'Test', 'Settings')
+__all__ = ('Answer', 'Question', 'Test', 'Settings', 'SequenceAnswer', 'QuestionType')
 
 
 class QuestionType(Enum):
@@ -25,7 +25,7 @@ class SequenceAnswer(Answer):
 class Question:
     body: str
     type: QuestionType
-    answers: List[Answer]
+    answers: List[Union[Answer, SequenceAnswer]]
 
 
 class Test:
