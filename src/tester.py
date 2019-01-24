@@ -55,11 +55,11 @@ class Tester:
             raise ValueError
         right_answer = self.__get_right_answer(question)
 
-        if question.type == QuestionType.Single.name:
+        if question.type == QuestionType.Single:
             self.count_answer(right_answer == str_user_answer)
             return right_answer
 
-        if question.type == QuestionType.Multiple.name:
+        if question.type == QuestionType.Multiple:
             for char in right_answer:
                 if char not in str_user_answer:
                     self.count_answer(False)
@@ -67,7 +67,7 @@ class Tester:
             self.count_answer(True)
             return right_answer
 
-        if question.type == QuestionType.Sequence.name:  # TODO
+        if question.type == QuestionType.Sequence:  # TODO
             self.count_answer(False)
             return "Under construction"
         else:
