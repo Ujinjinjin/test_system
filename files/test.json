@@ -180,31 +180,37 @@
         },
         {
             "body": "Определите Последовательность созданием архитектуры предприятия",
-            "type": "Order",
+            "type": "Sequence",
             "answers": [
                 {
-                    "body": "[1]определение и обоснование цели",
-                    "is_correct": false
+                    "body": "Определение и обоснование цели",
+                    "is_correct": false,
+					"seq_number": 1
                 },
                 {
-                    "body": "[2]определение существующего состояния архитектуры",
-                    "is_correct": false
+                    "body": "Определение существующего состояния архитектуры",
+                    "is_correct": false,
+					"seq_number": 2
                 },
                 {
-                    "body": "[3]определение целевой архитектуры",
-                    "is_correct": false
+                    "body": "Определение целевой архитектуры",
+                    "is_correct": false,
+					"seq_number": 3
                 },
                 {
-                    "body": "[4]разработка плана миграции",
-                    "is_correct": false
+                    "body": "Разработка плана миграции",
+                    "is_correct": false,
+					"seq_number": 4
                 },
                 {
-                    "body": "[5]выполнение назначенного плана",
-                    "is_correct": false
+                    "body": "Выполнение назначенного плана",
+                    "is_correct": false,
+					"seq_number": 5
                 },
                 {
-                    "body": "[6]еще вариант ответа",
-                    "is_correct": false
+                    "body": "Еще вариант ответа",
+                    "is_correct": false,
+					"seq_number": 6
                 }
             ]
         },
@@ -356,23 +362,27 @@
         },
         {
             "body": "Расположить последовательно этапы по обеспечению безопасности ИТ инфраструктуры",
-            "type": "Order",
+            "type": "Sequence",
             "answers": [
                 {
-                    "body": "[1]анализ существующей ИТ инфраструктуры и требований к системе безопасности",
-                    "is_correct": false
+                    "body": "Анализ существующей ИТ инфраструктуры и требований к системе безопасности",
+                    "is_correct": false,
+					"seq_number": 1
                 },
                 {
-                    "body": "[2]выявление уязвимых мест",
-                    "is_correct": false
+                    "body": "Выявление уязвимых мест",
+                    "is_correct": false,
+					"seq_number": 2
                 },
                 {
-                    "body": "[3]разработка плана мероприятий для повышения безопасности ИТ инфраструктуры до необходимого уровня",
-                    "is_correct": false
+                    "body": "Разработка плана мероприятий для повышения безопасности ИТ инфраструктуры до необходимого уровня",
+                    "is_correct": false,
+					"seq_number": 3
                 },
                 {
-                    "body": "[4]выполнение работ согласно плану",
-                    "is_correct": false
+                    "body": "Выполнение работ согласно плану",
+                    "is_correct": false,
+					"seq_number": 4
                 }
             ]
         },
@@ -570,35 +580,37 @@
         },
         {
             "body": "Расположите последовательно этапы проведения аудита ИТ инфраструктуры:",
-            "type": "Order",
+            "type": "Sequence",
             "answers": [
                 {
-                    "body": "[1]постановка задачи аудита,",
-                    "is_correct": false
+                    "body": "Постановка задачи аудита,",
+                    "is_correct": false,
+					"seq_number": 1
                 },
                 {
-                    "body": "[2]интервьюирование персонала,",
-                    "is_correct": false
+                    "body": "Интервьюирование персонала,",
+                    "is_correct": false,
+					"seq_number": 2
                 },
                 {
-                    "body": "[3]сбор исходных данных,",
-                    "is_correct": false
+                    "body": "Сбор исходных данных,",
+                    "is_correct": false,
+					"seq_number": 3
                 },
                 {
-                    "body": "[4]анализ,",
-                    "is_correct": false
+                    "body": "Анализ,",
+                    "is_correct": false,
+					"seq_number": 4
                 },
                 {
-                    "body": "[5]выработка рекомендаций",
-                    "is_correct": false
+                    "body": "Выработка рекомендаций",
+                    "is_correct": false,
+					"seq_number": 5
                 },
                 {
-                    "body": "[6]еще вариант ответа",
-                    "is_correct": false
-                },
-                {
-                    "body": "[7]еще вариант ответа",
-                    "is_correct": false
+                    "body": "Еще неизвестные варианты ответа",
+                    "is_correct": false,
+					"seq_number": 6
                 }
             ]
         },
@@ -756,27 +768,32 @@
         },
         {
             "body": "Определите последовательность этапов процесса управления проблемами:",
-            "type": "Order",
+            "type": "Sequence",
             "answers": [
                 {
-                    "body": "[1]анализ,",
-                    "is_correct": false
+                    "body": "Анализ,",
+                    "is_correct": false,
+					"seq_number": 1
                 },
                 {
-                    "body": "[2]идентификация и регистрация,",
-                    "is_correct": false
+                    "body": "Идентификация и регистрация,",
+                    "is_correct": false,
+					"seq_number": 2
                 },
                 {
-                    "body": "[3]классификация и назначение,",
-                    "is_correct": false
+                    "body": "Классификация и назначение,",
+                    "is_correct": false,
+					"seq_number": 3
                 },
                 {
-                    "body": "[4]исследование и диагностика,",
-                    "is_correct": false
+                    "body": "Исследование и диагностика,",
+                    "is_correct": false,
+					"seq_number": 4
                 },
                 {
-                    "body": "[5]еще вариант ответа",
-                    "is_correct": false
+                    "body": "Еще вариант ответа",
+                    "is_correct": false,
+					"seq_number": 5
                 }
             ]
         },
