@@ -2,8 +2,15 @@
 # -*- coding: utf-8 -*-
 from typing import List
 import json
+from enum import Enum
 
 __all__ = ('Answer', 'Question', 'Test', 'Settings')
+
+
+class QuestionType(Enum):
+    Single = 0
+    Multiple = 1
+    Sequence = 2
 
 
 class Answer:
@@ -11,9 +18,13 @@ class Answer:
     is_correct: bool
 
 
+class SequenceAnswer(Answer):
+    seq_number: int
+
+
 class Question:
     body: str
-    type: str
+    type: QuestionType
     answers: List[Answer]
 
 

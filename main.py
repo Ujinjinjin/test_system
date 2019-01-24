@@ -21,7 +21,7 @@ if __name__ == '__main__':
                 writeln(f'Количество верных ответов: {tester.correct_answers}', clear=True)
                 writeln(f'Вопрос №{q_num + 1}', v_centered=True)
                 writeln(f'{question.body}\n')
-                correct_answer: int
+                correct_answer: str
                 # No answers
                 if len(question.answers) == 0:
                     writeln('На этот вопрос ответ не найдет. Если вы знаете ответ, свяжитесь с Камилем.')
@@ -31,21 +31,21 @@ if __name__ == '__main__':
                 line_len = max([len(answer.body) for answer in question.answers])
                 for a_num, answer in enumerate(question.answers):
                     writeln(f'{a_num + 1}. {answer.body}{" " * (line_len - len(answer.body))}')
-                    if answer.is_correct:
-                        correct_answer = a_num + 1
 
                 if is_invalid_input:
                     writeln('\n')
                     writeln("Invalid input, try again")
-
-                writeln('\n\n')
+                    writeln('\n')
+                else:
+                    writeln('\n\n')
 
                 try:
                     user_answer = read('Введите номер варианта ответа: ', int)
                     writeln('\r')
 
+                    correct_answer = tester.check_answer(question, user_answer)
+
                     writeln(f'Ваш ответ: {user_answer} | Верный ответ {correct_answer}')
-                    tester.count_answer(question.answers[user_answer - 1])
                     writeln('Для продолжения нажмите Enter', wait=True)
 
                 except (ValueError, IndexError):
