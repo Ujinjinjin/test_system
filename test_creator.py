@@ -5,6 +5,7 @@ import json
 
 
 def convert_single(answer_list: List[str]):
+    dict_answers: List[dict] = list()
     for j in answer_list:
         a_body: str = j
         is_correct: bool = False
@@ -23,6 +24,7 @@ def convert_multiple(answer_list: List[str]):
 
 
 def convert_sequence(answer_list: List[str]):
+    dict_answers: List[dict] = list()
     for body in answer_list:
         a_body: str = body[3:]
         dict_answers.append({
@@ -78,9 +80,7 @@ if __name__ == '__main__':
     }
 
     for i in range(len(questions)):
-        dict_answers: List[dict] = list()
         q_type: str = question_types[questions[i][1]]
-
         dictionary['questions'].append({
             "body": questions[i][3:],
             "type": q_type,
