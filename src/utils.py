@@ -9,7 +9,7 @@ from typing import List, Dict
 
 __all__ = ('JsonUtils', 'Utils',)
 
-clear_command: str = 'cls' if platform.system() == 'Windows' else 'clear'
+clear_command: str = 'cls' if (platform.system() == 'Windows') else 'clear'
 
 
 class Converter:
@@ -55,7 +55,7 @@ class Utils:
 
     @staticmethod
     def clear_screen() -> None:
-        os.system('cls')
+        os.system(clear_command)
 
     @staticmethod
     def get_terminal_width() -> int:
