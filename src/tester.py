@@ -36,13 +36,13 @@ class Tester:
     def __get_right_answer(question: Question) -> str:  # Str имеет легкий поиск по строке (if i in str)
         counter = 0
         result = ""
-        if question.type == QuestionType.Single.name:
+        if question.type == QuestionType.Single:
             for item in question.answers:
                 if item.is_correct:
                     return str(counter + 1)
                 counter += 1
 
-        if question.type == QuestionType.Multiple.name:
+        if question.type == QuestionType.Multiple:
             for item in question.answers:
                 if item.is_correct:
                     result += str(counter + 1)
