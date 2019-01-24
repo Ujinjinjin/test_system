@@ -3,7 +3,7 @@
 import json
 import random
 
-from .models import Test, Answer, Settings
+from .models import Test, Answer, Settings, Question, QuestionType
 from .utils import JsonUtils
 
 
@@ -32,8 +32,50 @@ class Tester:
         with open(filename, 'r', encoding='utf8') as f:
             return json.load(f)
 
-    def count_answer(self, answer: Answer) -> None:
-        if answer.is_correct:
+    @staticmethod
+    def __get_right_answer(question: Question) -> str:  # Str имеет легкий поиск по строке (if i in str)
+        counter = 0
+        result = ""
+        if question.type == QuestionType.Single.name:
+            for item in question.answers:
+                if item.is_correct:
+                    return str(counter + 1)
+                counter += 1
+
+        if question.type == QuestionType.Multiple.name:
+            for item in question.answers:
+                if item.is_correct:
+                    result += str(counter + 1)
+                counter += 1
+            return result
+
+    def check_answer(self, question: Question, user_answer: int) -> str:
+        str_user_answer = str(user_answer)
+        if str_user_answer.__len__() > question.answers.__len__():
+            raise ValueError
+        right_answer = self.__get_right_answer(question)
+
+        if question.type == QuestionType.Single.name:
+            self.count_answer(right_answer == str_user_answer)
+            return right_answer
+
+        if question.type == QuestionType.Multiple.name:
+            for char in right_answer:
+                if char not in str_user_answer:
+                    self.count_answer(False)
+                    return right_answer
+            self.count_answer(True)
+            return right_answer
+
+        if question.type == QuestionType.Sequence.name:  # TODO
+            self.count_answer(False)
+            return "Under construction"
+        else:
+            self.count_answer(False)
+            return "Возможно у вопроса неправильный тип"
+
+    def count_answer(self, flag: bool):
+        if flag:
             self.__correct_answers += 1
         else:
             self.__incorrect_answers += 1
