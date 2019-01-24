@@ -102,6 +102,8 @@ class Tester:
             for question in self.test.questions:
                 if question.allowed_shuffle:
                     random.shuffle(question.answers)
+        if settings.questions_in_test > 0:
+            self.test.questions = self.test.questions[:settings.questions_in_test]
 
     @property
     def result(self) -> float:

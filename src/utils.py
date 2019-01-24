@@ -121,7 +121,6 @@ class Utils:
             import pwd
             return ' '.join(pwd.getpwuid(os.getuid())[4].split(','))
 
-
     @staticmethod
     def get_greeting():
         current_hour: int = datetime.now().time().hour

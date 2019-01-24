@@ -37,6 +37,7 @@ class Settings:
     only_test: bool
     shuffle_answers: bool
     allowed_question_types: List[str]
+    questions_in_test: int
 
     def __init__(self):
         self.load()
